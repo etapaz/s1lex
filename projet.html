@@ -62,16 +62,51 @@
   .logo-link:hover{opacity:.6;}
   .logo{
     display:block;
-    font-family:ui-monospace,'SF Mono','Cascadia Code','Consolas','Courier New',monospace;
-    font-size:clamp(9px,2.2vw,18px);
-    line-height:1.1;
-    letter-spacing:0;
-    white-space:pre;
-    font-weight:700;
-    text-shadow:0.09em 0.09em 0 #d8d3c8;
-    transition:font-size .45s var(--ease);
+    width:clamp(160px,22vw,300px);
+    height:auto;
+    transition:width .45s var(--ease);
   }
-  header.scrolled .logo{font-size:4px;}
+  header.scrolled .logo{width:90px;}
+  .logo-ink,.logo-shadow{transition:fill .4s ease;}
+  .scan-flicker{
+    animation-iteration-count:infinite;
+    animation-timing-function:ease-in-out;
+    mix-blend-mode:screen;
+  }
+  .scan-flicker.flickerA{animation-name:flickerA;}
+  .scan-flicker.flickerB{animation-name:flickerB;}
+  .scan-flicker.flickerC{animation-name:flickerC;}
+  .scan-flicker.flickerD{animation-name:flickerD;}
+  @keyframes flickerA{
+    0%,100%{opacity:.18;}
+    18%{opacity:.85;}
+    34%{opacity:.3;}
+    58%{opacity:.65;}
+    76%{opacity:.15;}
+  }
+  @keyframes flickerB{
+    0%,100%{opacity:.55;}
+    22%{opacity:.15;}
+    47%{opacity:.8;}
+    68%{opacity:.25;}
+    88%{opacity:.5;}
+  }
+  @keyframes flickerC{
+    0%,100%{opacity:.25;}
+    27%{opacity:.75;}
+    52%{opacity:.2;}
+    81%{opacity:.6;}
+  }
+  @keyframes flickerD{
+    0%,100%{opacity:.48;}
+    12%{opacity:.15;}
+    41%{opacity:.8;}
+    63%{opacity:.3;}
+    90%{opacity:.65;}
+  }
+  @media(prefers-reduced-motion:reduce){
+    .scan-flicker{animation:none;opacity:.15;}
+  }
   .nav-wrap{display:flex;align-items:center;gap:32px;}
   .lang-switch{display:flex;gap:10px;}
   .lang-switch a{font-size:11px;letter-spacing:.06em;color:var(--stone);transition:color .3s ease;}
@@ -222,10 +257,11 @@
   }
 
   @media(max-width:720px){
-    header{padding:20px 6vw;}
-    header.scrolled{padding:12px 6vw;}
-    .logo{font-size:11px;}
-    .back{padding:100px 6vw 0;}
+    header{padding:16px 6vw;flex-wrap:wrap;row-gap:12px;}
+    header.scrolled{padding:10px 6vw;}
+    .logo{width:150px;}
+    .nav-wrap{width:100%;justify-content:space-between;}
+    .back{padding:126px 6vw 0;}
     .details-grid{grid-template-columns:1fr;gap:36px;}
     .meta-row{gap:32px;}
     nav{gap:18px;}
@@ -245,11 +281,117 @@
 
 <header>
   <a href="index.html" class="logo-link" aria-label="S1LEX — retour à l'accueil" data-i18n-attr="aria-label:common.ariaHome">
-    <pre class="logo" aria-hidden="true">███████  ██ ██      ███████ ██   ██
-██      ███ ██      ██       ██ ██
-███████  ██ ██      █████     ███
-     ██  ██ ██      ██       ██ ██
-███████  ██ ███████ ███████ ██   ██</pre>
+    <svg class="logo" viewBox="0 0 3545 995" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="S1LEX">
+      <defs>
+        <clipPath id="logoClip">
+          <rect x="0" y="0" width="700" height="190"/>
+          <rect x="900" y="0" width="200" height="190"/>
+          <rect x="1200" y="0" width="200" height="190"/>
+          <rect x="2000" y="0" width="700" height="190"/>
+          <rect x="2800" y="0" width="200" height="190"/>
+          <rect x="3300" y="0" width="200" height="190"/>
+          <rect x="0" y="190" width="200" height="190"/>
+          <rect x="800" y="190" width="300" height="190"/>
+          <rect x="1200" y="190" width="200" height="190"/>
+          <rect x="2000" y="190" width="200" height="190"/>
+          <rect x="2900" y="190" width="200" height="190"/>
+          <rect x="3200" y="190" width="200" height="190"/>
+          <rect x="0" y="380" width="700" height="190"/>
+          <rect x="900" y="380" width="200" height="190"/>
+          <rect x="1200" y="380" width="200" height="190"/>
+          <rect x="2000" y="380" width="500" height="190"/>
+          <rect x="3000" y="380" width="300" height="190"/>
+          <rect x="500" y="570" width="200" height="190"/>
+          <rect x="900" y="570" width="200" height="190"/>
+          <rect x="1200" y="570" width="200" height="190"/>
+          <rect x="2000" y="570" width="200" height="190"/>
+          <rect x="2900" y="570" width="200" height="190"/>
+          <rect x="3200" y="570" width="200" height="190"/>
+          <rect x="0" y="760" width="700" height="190"/>
+          <rect x="900" y="760" width="200" height="190"/>
+          <rect x="1200" y="760" width="700" height="190"/>
+          <rect x="2000" y="760" width="700" height="190"/>
+          <rect x="2800" y="760" width="200" height="190"/>
+          <rect x="3300" y="760" width="200" height="190"/>
+        </clipPath>
+      </defs>
+      <g class="logo-shadow" fill="#d8d3c8" transform="translate(45,45)">
+        <rect x="0" y="0" width="700" height="190"/>
+        <rect x="900" y="0" width="200" height="190"/>
+        <rect x="1200" y="0" width="200" height="190"/>
+        <rect x="2000" y="0" width="700" height="190"/>
+        <rect x="2800" y="0" width="200" height="190"/>
+        <rect x="3300" y="0" width="200" height="190"/>
+        <rect x="0" y="190" width="200" height="190"/>
+        <rect x="800" y="190" width="300" height="190"/>
+        <rect x="1200" y="190" width="200" height="190"/>
+        <rect x="2000" y="190" width="200" height="190"/>
+        <rect x="2900" y="190" width="200" height="190"/>
+        <rect x="3200" y="190" width="200" height="190"/>
+        <rect x="0" y="380" width="700" height="190"/>
+        <rect x="900" y="380" width="200" height="190"/>
+        <rect x="1200" y="380" width="200" height="190"/>
+        <rect x="2000" y="380" width="500" height="190"/>
+        <rect x="3000" y="380" width="300" height="190"/>
+        <rect x="500" y="570" width="200" height="190"/>
+        <rect x="900" y="570" width="200" height="190"/>
+        <rect x="1200" y="570" width="200" height="190"/>
+        <rect x="2000" y="570" width="200" height="190"/>
+        <rect x="2900" y="570" width="200" height="190"/>
+        <rect x="3200" y="570" width="200" height="190"/>
+        <rect x="0" y="760" width="700" height="190"/>
+        <rect x="900" y="760" width="200" height="190"/>
+        <rect x="1200" y="760" width="700" height="190"/>
+        <rect x="2000" y="760" width="700" height="190"/>
+        <rect x="2800" y="760" width="200" height="190"/>
+        <rect x="3300" y="760" width="200" height="190"/>
+      </g>
+      <g class="logo-ink" fill="#161514">
+        <rect x="0" y="0" width="700" height="190"/>
+        <rect x="900" y="0" width="200" height="190"/>
+        <rect x="1200" y="0" width="200" height="190"/>
+        <rect x="2000" y="0" width="700" height="190"/>
+        <rect x="2800" y="0" width="200" height="190"/>
+        <rect x="3300" y="0" width="200" height="190"/>
+        <rect x="0" y="190" width="200" height="190"/>
+        <rect x="800" y="190" width="300" height="190"/>
+        <rect x="1200" y="190" width="200" height="190"/>
+        <rect x="2000" y="190" width="200" height="190"/>
+        <rect x="2900" y="190" width="200" height="190"/>
+        <rect x="3200" y="190" width="200" height="190"/>
+        <rect x="0" y="380" width="700" height="190"/>
+        <rect x="900" y="380" width="200" height="190"/>
+        <rect x="1200" y="380" width="200" height="190"/>
+        <rect x="2000" y="380" width="500" height="190"/>
+        <rect x="3000" y="380" width="300" height="190"/>
+        <rect x="500" y="570" width="200" height="190"/>
+        <rect x="900" y="570" width="200" height="190"/>
+        <rect x="1200" y="570" width="200" height="190"/>
+        <rect x="2000" y="570" width="200" height="190"/>
+        <rect x="2900" y="570" width="200" height="190"/>
+        <rect x="3200" y="570" width="200" height="190"/>
+        <rect x="0" y="760" width="700" height="190"/>
+        <rect x="900" y="760" width="200" height="190"/>
+        <rect x="1200" y="760" width="700" height="190"/>
+        <rect x="2000" y="760" width="700" height="190"/>
+        <rect x="2800" y="760" width="200" height="190"/>
+        <rect x="3300" y="760" width="200" height="190"/>
+      </g>
+      <g clip-path="url(#logoClip)">
+        <rect class="scan-flicker flickerA" x="-400" y="-11" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-0s"/>
+        <rect class="scan-flicker flickerB" x="-400" y="72" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.53s"/>
+        <rect class="scan-flicker flickerC" x="-400" y="155" width="4345" height="22" fill="#ffffff" style="animation-duration:2.24s;animation-delay:-1.06s"/>
+        <rect class="scan-flicker flickerD" x="-400" y="238" width="4345" height="22" fill="#ffffff" style="animation-duration:2.66s;animation-delay:-1.59s"/>
+        <rect class="scan-flicker flickerA" x="-400" y="321" width="4345" height="22" fill="#ffffff" style="animation-duration:3.08s;animation-delay:-2.12s"/>
+        <rect class="scan-flicker flickerB" x="-400" y="404" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-.05s"/>
+        <rect class="scan-flicker flickerC" x="-400" y="486" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.58s"/>
+        <rect class="scan-flicker flickerD" x="-400" y="569" width="4345" height="22" fill="#ffffff" style="animation-duration:2.24s;animation-delay:-1.11s"/>
+        <rect class="scan-flicker flickerA" x="-400" y="652" width="4345" height="22" fill="#ffffff" style="animation-duration:2.66s;animation-delay:-1.64s"/>
+        <rect class="scan-flicker flickerB" x="-400" y="735" width="4345" height="22" fill="#ffffff" style="animation-duration:3.08s;animation-delay:-2.17s"/>
+        <rect class="scan-flicker flickerC" x="-400" y="818" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-.1s"/>
+        <rect class="scan-flicker flickerD" x="-400" y="901" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.63s"/>
+      </g>
+    </svg>
   </a>
   <div class="nav-wrap">
     <nav>
@@ -312,8 +454,8 @@
   <a href="index.html#portfolio" class="next-link magnetic"><span data-i18n="projet.nextLink">Olas de Chile</span> <span class="arrow">→</span></a>
 </section>
 
-<footer>
-  <span data-i18n="common.footer">S1LEX — San Pedro de Quillota / 100% piedra, 0% humo</span>
+<footer id="siteFooter">
+  <span data-i18n="common.footer">S1LEX — San Pedro de Quillota / Chile</span>
   <span data-i18n="common.footerYears">© 2024 — 2026</span>
 </footer>
 
@@ -332,6 +474,7 @@
   const header = document.querySelector('header');
   const logo = document.querySelector('.logo');
   const toTop = document.querySelector('.to-top');
+  const siteFooter = document.getElementById('siteFooter');
   let ticking = false;
 
   function onScrollFrame(){
@@ -342,6 +485,11 @@
     header.classList.toggle('scrolled', y > 40);
 
     toTop.classList.toggle('visible', y > window.innerHeight * 0.6);
+
+    // keep the button clear of the footer copyright line
+    const footerRect = siteFooter.getBoundingClientRect();
+    const overlap = window.innerHeight - footerRect.top;
+    toTop.style.bottom = overlap > 0 ? (overlap + 16) + 'px' : '';
 
     ticking = false;
   }

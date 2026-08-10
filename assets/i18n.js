@@ -6,10 +6,10 @@
   var translations = {
     fr: {
       common: {
-        nav: { portfolio:'Portfolio', about:'About', contact:'Contact' },
+        nav: { portfolio:'Portfolio', about:'À propos', contact:'Contact' },
         ariaHome:'S1LEX — retour à l’accueil',
         ariaBackToTop:'Retour en haut',
-        footer:'S1LEX — San Pedro de Quillota / 100% pierre, 0% fumée',
+        footer:'S1LEX — San Pedro de Quillota / Chili',
         footerYears:'© 2024 — 2026'
       },
       index: {
@@ -80,7 +80,7 @@
         nav: { portfolio:'Portfolio', about:'About', contact:'Contact' },
         ariaHome:'S1LEX — back to home',
         ariaBackToTop:'Back to top',
-        footer:'S1LEX — San Pedro de Quillota / 100% stone, 0% smoke',
+        footer:'S1LEX — San Pedro de Quillota / Chile',
         footerYears:'© 2024 — 2026'
       },
       index: {
@@ -148,10 +148,10 @@
     },
     es: {
       common: {
-        nav: { portfolio:'Portfolio', about:'Sobre mí', contact:'Contacto' },
+        nav: { portfolio:'Portfolio', about:'Nosotros', contact:'Contacto' },
         ariaHome:'S1LEX — volver al inicio',
         ariaBackToTop:'Volver arriba',
-        footer:'S1LEX — San Pedro de Quillota / 100% piedra, 0% humo',
+        footer:'S1LEX — San Pedro de Quillota / Chile',
         footerYears:'© 2024 — 2026'
       },
       index: {
