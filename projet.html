@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Santuario Expediciones — S1LEX</title>
+<meta name="description" content="Santuario Expediciones — étude de cas S1LEX : plateforme de réservation d'expéditions nature à Pichilemu, Chili. Identité, UX et développement sur-mesure.">
+<link rel="canonical" href="https://s1lex.com/projet.html">
+<meta property="og:title" content="Santuario Expediciones — S1LEX">
+<meta property="og:description" content="Une plateforme pensée comme un sentier : sobre, guidée, sans détour. Étude de cas S1LEX pour Santuario Expediciones, Pichilemu.">
+<meta property="og:image" content="https://s1lex.com/assets/on-grave-on-code.png">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://s1lex.com/projet.html">
+<meta property="og:locale" content="fr_FR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Santuario Expediciones — S1LEX">
+<meta name="twitter:description" content="Une plateforme pensée comme un sentier : sobre, guidée, sans détour. Étude de cas S1LEX pour Santuario Expediciones, Pichilemu.">
+<meta name="twitter:image" content="https://s1lex.com/assets/on-grave-on-code.png">
+<style>
+  :root{
+    --bg:#f4f3f0;
+    --ink:#161514;
+    --stone:#9a9488;
+    --line:rgba(22,21,20,0.08);
+    --accent:#b5482b;
+    --ease:cubic-bezier(.16,1,.3,1);
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system,'Helvetica Neue',Arial,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  a{color:inherit;text-decoration:none;}
+  a,button{touch-action:manipulation;}
+  ::selection{background:var(--ink);color:var(--bg);}
+
+  .progress{
+    position:fixed;top:0;left:0;height:1px;width:0%;
+    background:var(--ink);z-index:200;
+    transition:width .1s linear;
+  }
+
+  header{
+    position:fixed;top:0;left:0;right:0;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:32px 6vw;
+    z-index:100;
+    transition:padding .45s var(--ease), backdrop-filter .5s var(--ease), background .5s var(--ease), border-color .5s var(--ease);
+    border-bottom:1px solid transparent;
+  }
+  header.scrolled{
+    padding:8px 6vw;
+    backdrop-filter:blur(10px);
+    background:rgba(244,243,240,0.7);
+    border-color:var(--line);
+  }
+  .logo-link{display:inline-block;line-height:0;transition:opacity .35s ease;}
+  .logo-link:hover{opacity:.6;}
+  .logo{
+    display:block;
+    font-family:ui-monospace,'SF Mono','Cascadia Code','Consolas','Courier New',monospace;
+    font-size:clamp(9px,2.2vw,18px);
+    line-height:1.1;
+    letter-spacing:0;
+    white-space:pre;
+    font-weight:700;
+    text-shadow:0.09em 0.09em 0 #d8d3c8;
+    transition:font-size .45s var(--ease);
+  }
+  header.scrolled .logo{font-size:4px;}
+  .nav-wrap{display:flex;align-items:center;gap:32px;}
+  .lang-switch{display:flex;gap:10px;}
+  .lang-switch a{font-size:11px;letter-spacing:.06em;color:var(--stone);transition:color .3s ease;}
+  .lang-switch a.active{color:var(--ink);text-decoration:underline;text-underline-offset:3px;}
+  .lang-switch a:hover{color:var(--ink);}
+  .hidden-wip{display:none !important;}
+  .sr-only{
+    position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+    overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;
+  }
+  nav{display:flex;gap:36px;}
+  nav a{font-size:12px;letter-spacing:0.06em;color:var(--stone);transition:color .4s ease;}
+  nav a:hover{color:var(--ink);}
+
+  section{padding:15vw 6vw;}
+
+  .tag{
+    font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:var(--stone);
+    margin-bottom:28px;overflow:hidden;
+  }
+  .tag span{display:inline-block;transform:translateY(100%);transition:transform .8s var(--ease);}
+  .reveal.in .tag span{transform:translateY(0);}
+
+  /* back link */
+  .back{padding:150px 6vw 0;}
+  .back-link{
+    font-size:12px;letter-spacing:0.06em;color:var(--stone);
+    transition:color .4s ease, transform .4s var(--ease);
+    display:inline-block;
+  }
+  .back-link:hover{color:var(--ink);transform:translateX(-4px);}
+
+  /* hero */
+  .hero{padding-top:6vw;padding-bottom:8vw;}
+  .hero h1{
+    font-size:clamp(2.6rem,6.6vw,5.6rem);
+    font-weight:400;line-height:1.02;letter-spacing:-0.02em;
+    max-width:18ch;
+  }
+  .split{overflow:hidden;display:block;}
+  .split span{display:inline-block;transform:translateY(110%);transition:transform 1s var(--ease);}
+  .reveal.in .split span{transform:translateY(0);}
+
+  .meta-row{
+    display:flex;gap:56px;flex-wrap:wrap;
+    margin-top:56px;padding-top:28px;border-top:1px solid var(--line);
+    opacity:0;transform:translateY(10px);
+    transition:opacity 1s var(--ease) .2s, transform 1s var(--ease) .2s;
+  }
+  .reveal.in .meta-row{opacity:1;transform:translateY(0);}
+  .meta-row div span{display:block;font-size:11px;color:var(--stone);letter-spacing:.05em;text-transform:uppercase;margin-bottom:8px;}
+  .meta-row div strong{font-size:15px;font-weight:400;}
+
+  .lede{padding-top:0;padding-bottom:8vw;}
+  .lede p{
+    font-size:clamp(1.1rem,2.4vw,1.5rem);line-height:1.6;max-width:36ch;
+    color:var(--ink);
+    opacity:0;transform:translateY(14px);
+    transition:opacity 1s var(--ease), transform 1s var(--ease);
+  }
+  .reveal.in .lede p{opacity:1;transform:translateY(0);}
+
+  /* visuals */
+  .visuals{padding-top:0;padding-bottom:8vw;display:flex;flex-direction:column;gap:24px;}
+  .visual{
+    aspect-ratio:16/9;width:100%;
+    border:1px solid var(--line);
+    background:linear-gradient(160deg, #eae7e1 0%, #f4f3f0 55%, #eae7e1 100%);
+    display:flex;align-items:flex-end;
+    position:relative;overflow:hidden;
+    opacity:0;transform:translateY(20px);
+    transition:opacity 1s var(--ease), transform 1s var(--ease);
+  }
+  .reveal.in .visual{opacity:1;transform:translateY(0);}
+  .visual span{
+    font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--stone);
+    padding:16px 20px;
+  }
+
+  /* details */
+  .details{padding-top:0;padding-bottom:8vw;}
+  .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:80px;}
+  .details-grid h2{
+    font-size:clamp(1.7rem,3.6vw,2.4rem);font-weight:400;letter-spacing:-0.01em;
+    margin-bottom:20px;line-height:1.1;
+    opacity:0;transform:translateY(12px);
+    transition:opacity 1s var(--ease), transform 1s var(--ease);
+  }
+  .reveal.in .details-grid h2{opacity:1;transform:translateY(0);}
+  .details-grid p{
+    font-size:1rem;line-height:1.7;color:var(--stone);max-width:40ch;
+    opacity:0;transform:translateY(12px);
+    transition:opacity 1s var(--ease) .1s, transform 1s var(--ease) .1s;
+  }
+  .reveal.in .details-grid p{opacity:1;transform:translateY(0);}
+
+  .specs{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--line);}
+  .specs div{
+    display:flex;justify-content:space-between;padding:16px 0;border-bottom:1px solid var(--line);
+    font-size:13px;
+  }
+  .specs div span:first-child{color:var(--stone);}
+  .specs div span:last-child{font-weight:400;}
+
+  /* next project */
+  .next{
+    padding-top:8vw;padding-bottom:14vw;
+    border-top:1px solid var(--line);
+  }
+  .next .tag{margin-bottom:24px;}
+  .next-link{
+    font-size:clamp(1.8rem,5.4vw,3.6rem);font-weight:400;letter-spacing:-0.02em;
+    display:inline-flex;align-items:center;gap:20px;
+    border-bottom:1px solid transparent;
+    transition:gap .5s var(--ease), color .4s ease;
+  }
+  .next-link:hover{gap:32px;color:var(--stone);}
+  .next-link .arrow{font-size:.55em;}
+
+  footer{
+    padding:36px 6vw 48px;
+    display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px;
+    font-size:11px;color:var(--stone);letter-spacing:.03em;
+    border-top:1px solid var(--line);
+  }
+
+  .to-top{
+    position:fixed;right:6vw;bottom:28px;
+    width:42px;height:42px;
+    display:flex;align-items:center;justify-content:center;
+    border:1px solid var(--line);border-radius:50%;
+    background:var(--bg);color:var(--ink);
+    font-size:14px;font-weight:400;
+    cursor:pointer;z-index:150;
+    opacity:0;transform:translateY(10px);pointer-events:none;
+    transition:opacity .5s var(--ease), transform .5s var(--ease), border-color .3s ease, background .3s ease;
+  }
+  .to-top.visible{opacity:1;transform:translateY(0);pointer-events:auto;}
+  .to-top:hover{border-color:var(--ink);background:var(--ink);color:var(--bg);}
+
+  .reveal{opacity:1;}
+
+  @media(prefers-reduced-motion:reduce){
+    *{transition-duration:0.01ms !important;animation-duration:0.01ms !important;}
+    .reveal,.split span,.tag span,.meta-row,.lede p,.visual,.details-grid h2,.details-grid p{
+      opacity:1 !important;transform:none !important;
+    }
+  }
+
+  @media(max-width:720px){
+    header{padding:20px 6vw;}
+    header.scrolled{padding:12px 6vw;}
+    .logo{font-size:11px;}
+    .back{padding:100px 6vw 0;}
+    .details-grid{grid-template-columns:1fr;gap:36px;}
+    .meta-row{gap:32px;}
+    nav{gap:18px;}
+    .nav-wrap{gap:18px;}
+    .to-top{right:5vw;bottom:20px;width:44px;height:44px;font-size:15px;}
+  }
+
+  @media(max-width:380px){
+    nav{gap:13px;}
+    nav a{font-size:11px;}
+  }
+</style>
+</head>
+<body data-page="projet">
+
+<div class="progress"></div>
+
+<header>
+  <a href="index.html" class="logo-link" aria-label="S1LEX — retour à l'accueil" data-i18n-attr="aria-label:common.ariaHome">
+    <pre class="logo" aria-hidden="true">███████  ██ ██      ███████ ██   ██
+██      ███ ██      ██       ██ ██
+███████  ██ ██      █████     ███
+     ██  ██ ██      ██       ██ ██
+███████  ██ ███████ ███████ ██   ██</pre>
+  </a>
+  <div class="nav-wrap">
+    <nav>
+      <a href="index.html#portfolio" data-i18n="common.nav.portfolio" class="hidden-wip">Portfolio</a>
+      <a href="index.html#qui" data-i18n="common.nav.about">About</a>
+      <a href="index.html#contact" data-i18n="common.nav.contact">Contact</a>
+    </nav>
+    <div class="lang-switch">
+      <a href="#" data-lang="fr">FR</a>
+      <a href="#" data-lang="en">EN</a>
+      <a href="#" data-lang="es">ES</a>
+    </div>
+  </div>
+</header>
+
+<div class="back reveal">
+  <a href="index.html#portfolio" class="back-link" data-i18n="projet.back">← Retour au portfolio</a>
+</div>
+
+<section class="hero reveal">
+  <div class="tag"><span data-i18n="projet.tag">(01) Étude de cas</span></div>
+  <h1>
+    <span class="split"><span data-i18n="projet.h1_1">Santuario</span></span>
+    <span class="split"><span data-i18n="projet.h1_2">Expediciones</span></span>
+  </h1>
+  <div class="meta-row">
+    <div><span data-i18n="projet.metaLabels.client">Client</span><strong>Santuario Expediciones</strong></div>
+    <div><span data-i18n="projet.metaLabels.category">Catégorie</span><strong data-i18n="projet.metaValues.category">Expéditions nature</strong></div>
+    <div><span data-i18n="projet.metaLabels.place">Lieu</span><strong data-i18n="projet.metaValues.place">Pichilemu, Chili</strong></div>
+    <div><span data-i18n="projet.metaLabels.year">Année</span><strong>2024</strong></div>
+  </div>
+</section>
+
+<section class="lede reveal">
+  <p data-i18n="projet.lede">Une plateforme pensée comme un sentier : sobre, guidée, sans détour. Réservation d'expéditions, cartographie du territoire, récits de terrain — chaque écran sert la marche, rien d'autre.</p>
+</section>
+
+<section class="visuals reveal">
+  <div class="visual"><span data-i18n="projet.visual1">Vue 01 — Accueil</span></div>
+  <div class="visual"><span data-i18n="projet.visual2">Vue 02 — Itinéraires</span></div>
+</section>
+
+<section class="details reveal">
+  <div class="details-grid">
+    <div>
+      <h2 data-i18n="projet.detailsTitle">Le contexte.</h2>
+      <p data-i18n="projet.detailsP">Santuario Expediciones organise des marches et traversées le long de la côte de Pichilemu. Leur présence en ligne ne racontait pas la rigueur du travail sur le terrain — nous avons repris la plateforme à zéro.</p>
+    </div>
+    <div class="specs">
+      <div><span data-i18n="projet.specsLabels.role">Rôle</span><span data-i18n="projet.specsValues.role">Identité, UX, développement</span></div>
+      <div><span data-i18n="projet.specsLabels.stack">Stack</span><span data-i18n="projet.specsValues.stack">Système statique, CMS léger</span></div>
+      <div><span data-i18n="projet.specsLabels.duration">Durée</span><span data-i18n="projet.specsValues.duration">7 semaines</span></div>
+      <div><span data-i18n="projet.specsLabels.deliverables">Livrables</span><span data-i18n="projet.specsValues.deliverables">Site, système de réservation</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="next reveal">
+  <div class="tag"><span data-i18n="projet.nextTag">Projet suivant</span></div>
+  <a href="index.html#portfolio" class="next-link magnetic"><span data-i18n="projet.nextLink">Olas de Chile</span> <span class="arrow">→</span></a>
+</section>
+
+<footer>
+  <span data-i18n="common.footer">S1LEX — San Pedro de Quillota / 100% piedra, 0% humo</span>
+  <span data-i18n="common.footerYears">© 2024 — 2026</span>
+</footer>
+
+<button type="button" class="to-top" aria-label="Retour en haut" data-i18n-attr="aria-label:common.ariaBackToTop">↑</button>
+
+<script src="assets/i18n.js"></script>
+<script>
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  },{threshold:0.2});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  const progress = document.querySelector('.progress');
+  const header = document.querySelector('header');
+  const logo = document.querySelector('.logo');
+  const toTop = document.querySelector('.to-top');
+  let ticking = false;
+
+  function onScrollFrame(){
+    const h = document.documentElement;
+    const y = h.scrollTop;
+    const pct = y/(h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = pct + '%';
+    header.classList.toggle('scrolled', y > 40);
+
+    toTop.classList.toggle('visible', y > window.innerHeight * 0.6);
+
+    ticking = false;
+  }
+  window.addEventListener('scroll',()=>{
+    if(!ticking){
+      requestAnimationFrame(onScrollFrame);
+      ticking = true;
+    }
+  },{passive:true});
+
+  toTop.addEventListener('click',()=>{
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+
+  if(window.matchMedia('(hover:hover) and (pointer:fine)').matches){
+    document.querySelectorAll('.magnetic').forEach(el=>{
+      el.addEventListener('mousemove',(e)=>{
+        const r = el.getBoundingClientRect();
+        const x = e.clientX - r.left - r.width/2;
+        const y = e.clientY - r.top - r.height/2;
+        el.style.transform = `translate(${x*0.15}px, ${y*0.3}px)`;
+      });
+      el.addEventListener('mouseleave',()=>{
+        el.style.transform = 'translate(0,0)';
+        el.style.transition = 'transform .5s var(--ease)';
+        setTimeout(()=> el.style.transition='', 500);
+      });
+    });
+  }
+</script>
+
+</body>
+</html>
