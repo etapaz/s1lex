@@ -82,7 +82,19 @@
   }
   .logo-link:hover .logo-shadow{transform:translate(62px,62px);opacity:.55;}
   .logo-lines{fill:var(--bg);transition:fill .4s ease;}
-  .logo-link:hover .logo-lines{fill:var(--stone);}
+  /* au survol : arc-en-ciel fluo façon Apple 1977, une couleur par ligne */
+  .logo-link:hover .logo-lines:nth-child(1),
+  .logo-link:hover .logo-lines:nth-child(7){fill:#ff2d3e;}
+  .logo-link:hover .logo-lines:nth-child(2),
+  .logo-link:hover .logo-lines:nth-child(8){fill:#ff8a00;}
+  .logo-link:hover .logo-lines:nth-child(3),
+  .logo-link:hover .logo-lines:nth-child(9){fill:#ffd400;}
+  .logo-link:hover .logo-lines:nth-child(4),
+  .logo-link:hover .logo-lines:nth-child(10){fill:#2ee06a;}
+  .logo-link:hover .logo-lines:nth-child(5),
+  .logo-link:hover .logo-lines:nth-child(11){fill:#0a84ff;}
+  .logo-link:hover .logo-lines:nth-child(6),
+  .logo-link:hover .logo-lines:nth-child(12){fill:#bf5af2;}
   .nav-wrap{display:flex;align-items:center;gap:32px;}
   .lang-switch{display:flex;gap:10px;}
   .lang-switch a{font-size:11px;letter-spacing:.06em;color:var(--stone);transition:color .3s ease;}
