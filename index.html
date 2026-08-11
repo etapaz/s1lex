@@ -86,8 +86,8 @@
     background:rgba(244,243,240,0.7);
     border-color:var(--line);
   }
-  .logo-link{display:inline-block;line-height:0;transition:opacity .35s ease;}
-  .logo-link:hover{opacity:.6;}
+  .logo-link{display:inline-block;line-height:0;transition:transform .4s var(--ease);}
+  .logo-link:hover{transform:translateY(-3px);}
   .logo{
     display:block;
     width:clamp(160px,22vw,300px);
@@ -95,8 +95,14 @@
     transition:width .45s var(--ease);
   }
   header.scrolled .logo{width:90px;}
-  .logo-ink,.logo-shadow{transition:fill .4s ease;}
-  .logo-lines{fill:var(--bg);}
+  .logo-ink{transition:fill .4s ease;}
+  .logo-shadow{
+    transform:translate(45px,45px);
+    transition:transform .4s var(--ease), opacity .4s var(--ease), fill .4s ease;
+  }
+  .logo-link:hover .logo-shadow{transform:translate(62px,62px);opacity:.55;}
+  .logo-lines{fill:var(--bg);transition:fill .4s ease;}
+  .logo-link:hover .logo-lines{fill:var(--stone);}
   .nav-wrap{display:flex;align-items:center;gap:32px;}
   .lang-switch{display:flex;gap:10px;}
   .lang-switch a{font-size:11px;letter-spacing:.06em;color:var(--stone);transition:color .3s ease;}
