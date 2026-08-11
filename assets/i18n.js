@@ -51,6 +51,7 @@
         },
         contact:{
           tag:'(05) Un projet en tête ?', h2:'On se parle<br>autour d’un feu.',
+          phone:'+56 9 64251236',
           imgAlt:'Illustration au trait de trois silhouettes assises autour d’un feu de camp, symbole des échanges chez S1LEX'
         }
       },
@@ -122,6 +123,7 @@
         },
         contact:{
           tag:'(05) A project in mind?', h2:'Let’s talk<br>around a fire.',
+          phone:'+56 9 64251236',
           imgAlt:'Line illustration of three silhouettes sitting around a campfire, symbol of exchange at S1LEX'
         }
       },
@@ -193,6 +195,7 @@
         },
         contact:{
           tag:'(05) ¿Un proyecto en mente?', h2:'Hablemos<br>junto al fuego.',
+          phone:'+56 9 64251236',
           imgAlt:'Ilustración de tres siluetas sentadas alrededor de una fogata, símbolo del intercambio en S1LEX'
         }
       },
