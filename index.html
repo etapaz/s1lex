@@ -92,45 +92,7 @@
   }
   header.scrolled .logo{width:90px;}
   .logo-ink,.logo-shadow{transition:fill .4s ease;}
-  .scan-flicker{
-    animation-iteration-count:infinite;
-    animation-timing-function:ease-in-out;
-    mix-blend-mode:screen;
-  }
-  .scan-flicker.flickerA{animation-name:flickerA;}
-  .scan-flicker.flickerB{animation-name:flickerB;}
-  .scan-flicker.flickerC{animation-name:flickerC;}
-  .scan-flicker.flickerD{animation-name:flickerD;}
-  @keyframes flickerA{
-    0%,100%{opacity:.18;}
-    18%{opacity:.85;}
-    34%{opacity:.3;}
-    58%{opacity:.65;}
-    76%{opacity:.15;}
-  }
-  @keyframes flickerB{
-    0%,100%{opacity:.55;}
-    22%{opacity:.15;}
-    47%{opacity:.8;}
-    68%{opacity:.25;}
-    88%{opacity:.5;}
-  }
-  @keyframes flickerC{
-    0%,100%{opacity:.25;}
-    27%{opacity:.75;}
-    52%{opacity:.2;}
-    81%{opacity:.6;}
-  }
-  @keyframes flickerD{
-    0%,100%{opacity:.48;}
-    12%{opacity:.15;}
-    41%{opacity:.8;}
-    63%{opacity:.3;}
-    90%{opacity:.65;}
-  }
-  @media(prefers-reduced-motion:reduce){
-    .scan-flicker{animation:none;opacity:.15;}
-  }
+  .logo-lines{fill:var(--bg);}
   .nav-wrap{display:flex;align-items:center;gap:32px;}
   .lang-switch{display:flex;gap:10px;}
   .lang-switch a{font-size:11px;letter-spacing:.06em;color:var(--stone);transition:color .3s ease;}
@@ -155,8 +117,11 @@
     display:flex;
     flex-direction:column;
     justify-content:center;
-    padding-top:118px;
-    padding-bottom:8vw;
+    /* dégage toujours la navbar fixe (~150px) puis centre optiquement
+       le contenu dans l'espace visible sous le header, quelle que soit
+       la hauteur d'écran */
+    padding-top:calc(150px + clamp(44px,9vh,120px));
+    padding-bottom:clamp(44px,9vh,120px);
   }
 
   .hero-grid{
@@ -384,7 +349,7 @@
     header.scrolled{padding:10px 6vw;}
     .logo{width:150px;}
     .nav-wrap{width:100%;justify-content:space-between;}
-    .hero{padding-top:118px;}
+    .hero{padding-top:clamp(150px,18vh,200px);}
     .maniere-grid{grid-template-columns:1fr;gap:36px;}
     .work-item{grid-template-columns:28px 1fr;row-gap:8px;}
     .work-cat,.work-year{grid-column:2/3;text-align:left;}
@@ -392,17 +357,18 @@
     .nav-wrap{gap:18px;}
     .to-top{right:5vw;bottom:20px;width:44px;height:44px;font-size:15px;}
     .contact-grid{flex-direction:column-reverse;gap:32px;}
-    .contact-visual{justify-content:center;}
-    .contact-visual img{max-width:320px;}
+    .contact-visual{justify-content:center;flex:0 0 auto;width:100%;align-items:flex-start;}
+    .contact-visual img{max-width:320px;height:auto;}
     .hero-grid{flex-direction:column;gap:24px;}
-    .hero-visual{justify-content:center;order:2;}
-    .hero-visual img{max-width:280px;}
+    .hero-visual{justify-content:center;order:1;flex:0 0 auto;width:100%;align-items:flex-start;}
+    .hero-text{order:2;}
+    .hero-visual img{max-width:280px;height:auto;}
     .maniere-top{flex-direction:column;align-items:flex-start;gap:24px;}
-    .maniere-visual{justify-content:center;order:2;width:100%;}
-    .maniere-visual img{max-width:220px;}
+    .maniere-visual{justify-content:center;order:2;width:100%;flex:0 0 auto;align-items:flex-start;}
+    .maniere-visual img{max-width:220px;height:auto;}
     .work-top{flex-direction:column;align-items:flex-start;gap:24px;}
-    .work-visual{justify-content:center;order:2;width:100%;}
-    .work-visual img{max-width:200px;}
+    .work-visual{justify-content:center;order:2;width:100%;flex:0 0 auto;align-items:flex-start;}
+    .work-visual img{max-width:200px;height:auto;}
     .qui-body{flex-direction:column;align-items:flex-start;gap:24px;}
     .qui-portrait img{width:140px;height:170px;}
   }
@@ -516,18 +482,18 @@
         <rect x="3300" y="760" width="200" height="190"/>
       </g>
       <g clip-path="url(#logoClip)">
-        <rect class="scan-flicker flickerA" x="-400" y="-11" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-0s"/>
-        <rect class="scan-flicker flickerB" x="-400" y="72" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.53s"/>
-        <rect class="scan-flicker flickerC" x="-400" y="155" width="4345" height="22" fill="#ffffff" style="animation-duration:2.24s;animation-delay:-1.06s"/>
-        <rect class="scan-flicker flickerD" x="-400" y="238" width="4345" height="22" fill="#ffffff" style="animation-duration:2.66s;animation-delay:-1.59s"/>
-        <rect class="scan-flicker flickerA" x="-400" y="321" width="4345" height="22" fill="#ffffff" style="animation-duration:3.08s;animation-delay:-2.12s"/>
-        <rect class="scan-flicker flickerB" x="-400" y="404" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-.05s"/>
-        <rect class="scan-flicker flickerC" x="-400" y="486" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.58s"/>
-        <rect class="scan-flicker flickerD" x="-400" y="569" width="4345" height="22" fill="#ffffff" style="animation-duration:2.24s;animation-delay:-1.11s"/>
-        <rect class="scan-flicker flickerA" x="-400" y="652" width="4345" height="22" fill="#ffffff" style="animation-duration:2.66s;animation-delay:-1.64s"/>
-        <rect class="scan-flicker flickerB" x="-400" y="735" width="4345" height="22" fill="#ffffff" style="animation-duration:3.08s;animation-delay:-2.17s"/>
-        <rect class="scan-flicker flickerC" x="-400" y="818" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-.1s"/>
-        <rect class="scan-flicker flickerD" x="-400" y="901" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.63s"/>
+        <rect class="logo-lines" x="-400" y="-11" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="72" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="155" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="238" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="321" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="404" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="486" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="569" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="652" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="735" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="818" width="4345" height="22"/>
+        <rect class="logo-lines" x="-400" y="901" width="4345" height="22"/>
       </g>
     </svg>
   </a>

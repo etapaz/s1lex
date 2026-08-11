@@ -33,16 +33,8 @@
     </clipPath>
   </defs>
   <style>
-    .scan-flicker{animation-iteration-count:infinite;animation-timing-function:ease-in-out;mix-blend-mode:screen;}
-    .scan-flicker.flickerA{animation-name:flickerA;}
-    .scan-flicker.flickerB{animation-name:flickerB;}
-    .scan-flicker.flickerC{animation-name:flickerC;}
-    .scan-flicker.flickerD{animation-name:flickerD;}
-    @keyframes flickerA{0%,100%{opacity:.18;}18%{opacity:.85;}34%{opacity:.3;}58%{opacity:.65;}76%{opacity:.15;}}
-    @keyframes flickerB{0%,100%{opacity:.55;}22%{opacity:.15;}47%{opacity:.8;}68%{opacity:.25;}88%{opacity:.5;}}
-    @keyframes flickerC{0%,100%{opacity:.25;}27%{opacity:.75;}52%{opacity:.2;}81%{opacity:.6;}}
-    @keyframes flickerD{0%,100%{opacity:.48;}12%{opacity:.15;}41%{opacity:.8;}63%{opacity:.3;}90%{opacity:.65;}}
-    @media(prefers-reduced-motion:reduce){.scan-flicker{animation:none;opacity:.15;}}
+    :root{--bg:#f4f3f0;}
+    .logo-lines{fill:var(--bg);}
   </style>
   <g class="logo-shadow" fill="#d8d3c8" transform="translate(45,45)">
     <rect x="0" y="0" width="700" height="190"/>
@@ -107,17 +99,17 @@
     <rect x="3300" y="760" width="200" height="190"/>
   </g>
   <g clip-path="url(#logoClip)">
-    <rect class="scan-flicker flickerA" x="-400" y="-11" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-0s"/>
-    <rect class="scan-flicker flickerB" x="-400" y="72" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.53s"/>
-    <rect class="scan-flicker flickerC" x="-400" y="155" width="4345" height="22" fill="#ffffff" style="animation-duration:2.24s;animation-delay:-1.06s"/>
-    <rect class="scan-flicker flickerD" x="-400" y="238" width="4345" height="22" fill="#ffffff" style="animation-duration:2.66s;animation-delay:-1.59s"/>
-    <rect class="scan-flicker flickerA" x="-400" y="321" width="4345" height="22" fill="#ffffff" style="animation-duration:3.08s;animation-delay:-2.12s"/>
-    <rect class="scan-flicker flickerB" x="-400" y="404" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-.05s"/>
-    <rect class="scan-flicker flickerC" x="-400" y="486" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.58s"/>
-    <rect class="scan-flicker flickerD" x="-400" y="569" width="4345" height="22" fill="#ffffff" style="animation-duration:2.24s;animation-delay:-1.11s"/>
-    <rect class="scan-flicker flickerA" x="-400" y="652" width="4345" height="22" fill="#ffffff" style="animation-duration:2.66s;animation-delay:-1.64s"/>
-    <rect class="scan-flicker flickerB" x="-400" y="735" width="4345" height="22" fill="#ffffff" style="animation-duration:3.08s;animation-delay:-2.17s"/>
-    <rect class="scan-flicker flickerC" x="-400" y="818" width="4345" height="22" fill="#ffffff" style="animation-duration:1.4s;animation-delay:-.1s"/>
-    <rect class="scan-flicker flickerD" x="-400" y="901" width="4345" height="22" fill="#ffffff" style="animation-duration:1.82s;animation-delay:-.63s"/>
+    <rect class="logo-lines" x="-400" y="-11" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="72" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="155" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="238" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="321" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="404" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="486" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="569" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="652" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="735" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="818" width="4345" height="22"/>
+    <rect class="logo-lines" x="-400" y="901" width="4345" height="22"/>
   </g>
 </svg>
